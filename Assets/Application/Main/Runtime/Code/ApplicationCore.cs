@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using Sadalmelik.CSV;
 using UnityEngine;
 using Sadalmelik.FitApp.Architecture;
 

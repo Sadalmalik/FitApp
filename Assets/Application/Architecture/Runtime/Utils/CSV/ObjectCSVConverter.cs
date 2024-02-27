@@ -4,10 +4,10 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace Sadalmelik.CSV
+namespace Sadalmelik.FitApp.Architecture
 {
 	// Just like ORM is Object-Relation Mapping
-	// This one is Object-CSV Mapping
+	// This one is Object-CSV Mapping - OCM :)
 	public static class ObjectCSVConverter
 	{
 		private static BindingFlags flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;

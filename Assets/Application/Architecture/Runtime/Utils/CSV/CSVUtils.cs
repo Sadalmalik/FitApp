@@ -4,7 +4,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-namespace Sadalmelik.CSV
+namespace Sadalmelik.FitApp.Architecture
 {
     public static class CSVUtils
     {
