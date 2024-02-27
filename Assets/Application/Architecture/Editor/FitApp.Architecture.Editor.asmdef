@@ -1,0 +1,16 @@
+{
+    "name": "FitApp.Architecture.Editor",
+    "rootNamespace": "Sadalmelik.FitApp.Architecture",
+    "references": [
+        "FitApp.Architecture"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

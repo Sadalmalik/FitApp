@@ -1,0 +1,17 @@
+{
+    "name": "FitApp.Main",
+    "rootNamespace": "Sadalmelik.FitApp.Main",
+    "references": [
+        "GUID:c2324dd1990d168459a5b6f30526e2c7",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

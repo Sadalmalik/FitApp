@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 727821b9c56a48be851daeb28eb36e37, type: 3}
+  m_Name: ApplicationConfig
+  m_EditorClassIdentifier: 
+  DatabaseSource: https://docs.google.com/spreadsheets/d/e/2PACX-1vSYvJ_7Z5-yiv7aM0H30T91bUqj5C8t7eJ65DsU1B5hfRscRIsr1NAkPZVo1poglbkSa_R6qMfUocWn/pub?gid=0&single=true&output=csv
+  HarrisBenedictModelMale:
+    Bias: 88.362
+    CoefWeight: 13.397
+    CoefHeight: 4.799
+    CoefAge: -5.677
+  HarrisBenedictModelFemale:
+    Bias: 447.593
+    CoefWeight: 9.247
+    CoefHeight: 3.098
+    CoefAge: -4.33
+  MifflinStJeorModelMale:
+    Bias: 5
+    CoefWeight: 10
+    CoefHeight: 6.25
+    CoefAge: -5
+  MifflinStJeorModelFemale:
+    Bias: -161
+    CoefWeight: 10
+    CoefHeight: 6.25
+    CoefAge: -5
+  WHOModelMale:
+    CoefScale: 240
+    CoefBiasA: 2.896
+    CoefBiasB: 3.653
+    CoefBiasC: 2.459
+    CoefWeightA: 0.063
+    CoefWeightB: 0.048
+    CoefWeightC: 0.049
+  WHOModelFemale:
+    CoefScale: 240
+    CoefBiasA: 2.036
+    CoefBiasB: 3.538
+    CoefBiasC: 2.755
+    CoefWeightA: 0.062
+    CoefWeightB: 0.034
+    CoefWeightC: 0.038
