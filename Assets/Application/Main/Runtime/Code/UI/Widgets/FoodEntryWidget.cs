@@ -8,9 +8,9 @@ namespace Sadalmelik.FitApp.Main
         public TMP_Text LabelPFC;
         public TMP_Text LabelCalories;
         
-        public override void SetValue(FoodEntry newValue)
+        public override void SetValue(int newIndex, FoodEntry newValue)
         {
-            base.SetValue(newValue);
+            base.SetValue(newIndex, newValue);
             
             LabelName.SetText(Value.name);
             LabelPFC.SetText($"{Value.proteins} / {Value.fats} / {Value.carbohydrates}");

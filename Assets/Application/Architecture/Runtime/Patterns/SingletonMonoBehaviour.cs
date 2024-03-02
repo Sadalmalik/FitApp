@@ -18,7 +18,9 @@ namespace Sadalmelik.FitApp.Architecture
             Init();
         }
 
-        protected abstract void Init();
+        protected virtual void Init()
+        {
+        }
 
         public virtual void OnDestroy()
         {

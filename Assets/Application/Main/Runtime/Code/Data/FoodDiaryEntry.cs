@@ -11,7 +11,7 @@ namespace Sadalmelik.FitApp.Main
         // Data
         public int id;
         public DateTime date;
-        public int FoodId;
+        public int foodId;
 
         // Cache for fast analysis
         public float calories;

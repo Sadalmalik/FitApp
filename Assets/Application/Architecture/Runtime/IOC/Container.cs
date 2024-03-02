@@ -20,6 +20,8 @@ namespace Sadalmelik.FitApp.Architecture
         public List<Container> Childs { get; private set; }
         public List<IShared> SharedObjects => _shareds.Values.ToList();
 
+        public event Action OnInitialized; 
+
         public Container(Container parent = null, string name = null)
         {
             Name = name ?? $"Container#{_counter:0000}";
@@ -144,6 +146,8 @@ namespace Sadalmelik.FitApp.Architecture
             }
 
             Active = true;
+            OnInitialized?.Invoke();
+            OnInitialized = null; // Call once
         }
 
         public void InjectAt(object target)

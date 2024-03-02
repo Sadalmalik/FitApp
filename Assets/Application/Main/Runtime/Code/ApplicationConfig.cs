@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Sadalmelik.FitApp.Architecture;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Sadalmelik.FitApp.Main
@@ -7,7 +8,7 @@ namespace Sadalmelik.FitApp.Main
         menuName = "[FitApp]/ApplicationConfig",
         fileName = "ApplicationConfig",
         order = 0)]
-    public class ApplicationConfig : ScriptableObject
+    public class ApplicationConfig : SingletonScriptableObject<ApplicationConfig>
     {
         [Header("Base")]
         [TextArea(3, 8)]

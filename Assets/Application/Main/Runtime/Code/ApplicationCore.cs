@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -6,18 +7,28 @@ using Sadalmelik.FitApp.Architecture;
 
 namespace Sadalmelik.FitApp.Main
 {
-    public class ApplicationCore : SingletonMonoBehaviour<ApplicationCore>
+    public class ApplicationCore : SharedObject
     {
-        public ApplicationConfig config;
+        [Inject] private SaveManager _saveManager;
+        
+        public ApplicationConfig Config { get; private set; }
 
-        public FoodListWidget foodListWidget;
+        public List<FoodEntry> FoodList { get; private set; }
+
+        private event Action OnDataLoaded;
         
-        
-        
-        private List<FoodEntry> _food;
-        
-        protected override void Init()
+        public void SubscribeLoaded(Action callback)
         {
+            if (FoodList == null)
+                OnDataLoaded += callback;
+            else
+                callback?.Invoke();
+        }
+        
+        public override void Init()
+        {
+            Config = ApplicationConfig.Instance;
+            
             DownloadDatabase();
         }
 
@@ -25,21 +36,40 @@ namespace Sadalmelik.FitApp.Main
         {
             var watch = System.Diagnostics.Stopwatch.StartNew();
             WebClient client = new WebClient();
-            
-            Stream data = client.OpenRead(config.DatabaseSource);
+
+            Stream data = client.OpenRead(Config.DatabaseSource);
             StreamReader reader = new StreamReader(data);
             string content = await reader.ReadToEndAsync();
-            
-            _food = ObjectCSVConverter.FromCSV<FoodEntry>(content);
-            foodListWidget.SetList(_food);
-            
+
+            FoodList = ObjectCSVConverter.FromCSV<FoodEntry>(content);
             watch.Stop();
-            Debug.Log($"Database ready, took {watch.ElapsedMilliseconds / 1000f}");
+            
+            OnDataLoaded?.Invoke();
         }
 
-        protected void Start()
+        public void AddFoodToDiary(FoodEntry foodEntry)
         {
-            
-        } 
+            var diary = _saveManager.Data.FoodDiary;
+            diary.Add(new FoodDiaryEntry
+            {
+                id = diary.Count,
+                date = DateTime.Now,
+                foodId = foodEntry.Id,
+                calories = foodEntry.calories
+            });
+            _saveManager.Save();
+        }
+        
+        public float GetRecommendedCalories()
+        {
+            if (_saveManager
+                    .Data
+                    .UserData
+                    .UserSex == UserSex.Male)
+            {
+                return Config.harrisBenedictMale.Calculate(_saveManager.Data.UserData);
+            }
+            return Config.harrisBenedictFemale.Calculate(_saveManager.Data.UserData);
+        }
     }
 }
